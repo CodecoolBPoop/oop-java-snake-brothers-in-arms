@@ -43,7 +43,7 @@ public class Game extends Pane {
         snake = new Snake(new Vec2d(500, 500));
     }
 
-    private void spawnEnemies(int numberOfEnemies) {
+    static void spawnEnemies(int numberOfEnemies) {
         for(int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
     }
 
@@ -56,4 +56,11 @@ public class Game extends Pane {
         scene.setOnKeyPressed(event -> InputHandler.getInstance().setKeyPressed(event.getCode()));
         scene.setOnKeyReleased(event -> InputHandler.getInstance().setKeyReleased(event.getCode()));
     }
+
+    /*static void isEnemiesNeed(int numberOfEnemies) {
+        if(numberOfEnemies <= 2) {
+            for(int i = 0; i < numberOfEnemies - 1; i++) new SimpleEnemy();
+        }
+    }
+    */
 }

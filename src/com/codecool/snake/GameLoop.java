@@ -24,6 +24,9 @@ public class GameLoop {
     public void step() {
         if(running) {
             snake.step();
+            if(Math.random() < 0.007){
+                Game.spawnEnemies(1);
+            }
             for (GameEntity gameObject : Globals.getInstance().display.getObjectList()) {
                 if (gameObject instanceof Animatable) {
                     ((Animatable) gameObject).step();
