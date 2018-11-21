@@ -51,7 +51,7 @@ public class SnakeHead extends GameEntity implements Interactable {
             snake.addPart(2);
         }
         if (entity instanceof SpeedUpPowerUp) {
-            Snake.setSpeed(Snake.getSpeed() + 1);
+            Snake.setSpeed(Snake.getSpeed() + 0.3f);
         }
         if (entity instanceof GunPowerUp && Snake.getAmmo() == 0) {
             setImage(Globals.getInstance().getImage("SnakeHeadGun"));

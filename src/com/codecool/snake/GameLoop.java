@@ -34,6 +34,15 @@ public class GameLoop {
                 getSnakePartsPositions();
                 Game.spawnEnemies(1);
             }
+            if (Math.random() < 0.003) {
+                Game.spawnGuns(1);
+            }
+            if (Math.random() < 0.003) {
+                Game.spawnSpeedUps(1);
+            }
+            if (Math.random() < 0.002) {
+                Game.spawnPowerUps(1);
+            }
             for (GameEntity gameObject : Globals.getInstance().display.getObjectList()) {
                 if (gameObject instanceof Animatable) {
                     ((Animatable) gameObject).step();

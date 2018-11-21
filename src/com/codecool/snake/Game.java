@@ -38,11 +38,11 @@ public class Game extends Pane {
         gameTimer.play();
     }
 
-    private void spawnSpeedUps(int numOfPowerUps) {
+    static void spawnSpeedUps(int numOfPowerUps) {
         for(int i = 0; i < numOfPowerUps; ++i) new SpeedUpPowerUp();
     }
 
-    private void spawnGuns(int numOfPowerUps) {
+    static void spawnGuns(int numOfPowerUps) {
         for(int i = 0; i < numOfPowerUps; ++i) new GunPowerUp();
     }
 
@@ -59,7 +59,7 @@ public class Game extends Pane {
         for(int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
     }
 
-    private void spawnPowerUps(int numberOfPowerUps) {
+    static void spawnPowerUps(int numberOfPowerUps) {
         for(int i = 0; i < numberOfPowerUps; ++i) new SimplePowerUp();
     }
 
