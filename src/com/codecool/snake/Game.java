@@ -1,7 +1,9 @@
 package com.codecool.snake;
 
 import com.codecool.snake.entities.enemies.SimpleEnemy;
+import com.codecool.snake.entities.powerups.GunPowerUp;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
+import com.codecool.snake.entities.powerups.SpeedUpPowerUp;
 import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.eventhandler.InputHandler;
 
@@ -27,11 +29,21 @@ public class Game extends Pane {
         spawnSnake();
         spawnEnemies(4);
         spawnPowerUps(4);
+        spawnSpeedUps(2);
+        spawnGuns(3);
 
         GameLoop gameLoop = new GameLoop(snake);
         Globals.getInstance().setGameLoop(gameLoop);
         gameTimer.setup(gameLoop::step);
         gameTimer.play();
+    }
+
+    private void spawnSpeedUps(int numOfPowerUps) {
+        for(int i = 0; i < numOfPowerUps; ++i) new SpeedUpPowerUp();
+    }
+
+    private void spawnGuns(int numOfPowerUps) {
+        for(int i = 0; i < numOfPowerUps; ++i) new GunPowerUp();
     }
 
     public void start() {
