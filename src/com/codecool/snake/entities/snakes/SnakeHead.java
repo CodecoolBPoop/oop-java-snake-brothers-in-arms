@@ -5,8 +5,10 @@ import com.codecool.snake.Globals;
 import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.enemies.Enemy;
+import com.codecool.snake.entities.powerups.GunPowerUp;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
 
+import com.codecool.snake.entities.powerups.SpeedUpPowerUp;
 import com.sun.javafx.geom.Vec2d;
 import javafx.geometry.Point2D;
 
@@ -17,7 +19,7 @@ public class SnakeHead extends GameEntity implements Interactable {
 
     public SnakeHead(Snake snake, Vec2d position) {
         this.snake = snake;
-        setImage(Globals.getInstance().getImage("SnakeHead"));
+        setImage(Globals.getInstance().getImage("SnakeHead1"));
         setPosition(position);
     }
 
@@ -46,7 +48,16 @@ public class SnakeHead extends GameEntity implements Interactable {
         }
         if(entity instanceof SimplePowerUp){
             System.out.println(getMessage());
-            snake.addPart(4);
+            snake.addPart(2);
+        }
+        if (entity instanceof SpeedUpPowerUp) {
+            Snake.setSpeed(Snake.getSpeed() + 0.3f);
+        }
+        if (entity instanceof GunPowerUp && Snake.getAmmo() == 0) {
+            setImage(Globals.getInstance().getImage("SnakeHeadGun"));
+            Snake.setAmmo(Snake.getAmmo()+ 5);
+        }else if (entity instanceof GunPowerUp && Snake.getAmmo() != 0) {
+            Snake.setAmmo(Snake.getAmmo() + 5);
         }
     }
 

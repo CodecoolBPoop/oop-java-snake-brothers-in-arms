@@ -1,7 +1,9 @@
 package com.codecool.snake;
 
 import com.codecool.snake.entities.enemies.SimpleEnemy;
+import com.codecool.snake.entities.powerups.GunPowerUp;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
+import com.codecool.snake.entities.powerups.SpeedUpPowerUp;
 import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.eventhandler.InputHandler;
 
@@ -27,11 +29,21 @@ public class Game extends Pane {
         spawnSnake();
         spawnEnemies(4);
         spawnPowerUps(4);
+        spawnSpeedUps(2);
+        spawnGuns(3);
 
         GameLoop gameLoop = new GameLoop(snake);
         Globals.getInstance().setGameLoop(gameLoop);
         gameTimer.setup(gameLoop::step);
         gameTimer.play();
+    }
+
+    static void spawnSpeedUps(int numOfPowerUps) {
+        for(int i = 0; i < numOfPowerUps; ++i) new SpeedUpPowerUp();
+    }
+
+    static void spawnGuns(int numOfPowerUps) {
+        for(int i = 0; i < numOfPowerUps; ++i) new GunPowerUp();
     }
 
     public void start() {
@@ -43,11 +55,11 @@ public class Game extends Pane {
         snake = new Snake(new Vec2d(500, 500));
     }
 
-    private void spawnEnemies(int numberOfEnemies) {
+    static void spawnEnemies(int numberOfEnemies) {
         for(int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
     }
 
-    private void spawnPowerUps(int numberOfPowerUps) {
+    static void spawnPowerUps(int numberOfPowerUps) {
         for(int i = 0; i < numberOfPowerUps; ++i) new SimplePowerUp();
     }
 
@@ -56,4 +68,11 @@ public class Game extends Pane {
         scene.setOnKeyPressed(event -> InputHandler.getInstance().setKeyPressed(event.getCode()));
         scene.setOnKeyReleased(event -> InputHandler.getInstance().setKeyReleased(event.getCode()));
     }
+
+    /*static void isEnemiesNeed(int numberOfEnemies) {
+        if(numberOfEnemies <= 2) {
+            for(int i = 0; i < numberOfEnemies - 1; i++) new SimpleEnemy();
+        }
+    }
+    */
 }
