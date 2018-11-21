@@ -5,9 +5,7 @@ import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.snakes.Snake;
 import com.sun.javafx.geom.Vec2d;
-import com.sun.org.apache.xerces.internal.xs.datatypes.ObjectList;
 
-import java.sql.SQLOutput;
 import java.util.*;
 
 public class GameLoop {
@@ -29,9 +27,9 @@ public class GameLoop {
     public void step() {
         if (running) {
             snake.step();
-            if (Math.random() < 0.007) {
+            getSnakesHead();
+            if (Math.random() < 0.07) {
                 // add here the exception for enemy spawn on the snake body
-                getSnakePartsPositions();
                 Game.spawnEnemies(1);
             }
             for (GameEntity gameObject : Globals.getInstance().display.getObjectList()) {
@@ -63,7 +61,7 @@ public class GameLoop {
         }
     }
 
-    private List<GameEntity> getSnakeParts() {
+    private static List<GameEntity> getSnakeParts() {
         List<GameEntity> gameObjects = Globals.getInstance().display.getObjectList();
         List<GameEntity> snakeParts = new ArrayList<>();
         for (GameEntity gameObject : gameObjects) {
@@ -75,13 +73,44 @@ public class GameLoop {
         return snakeParts;
     }
 
-
-    private void getSnakePartsPositions() {
+    private static List<Vec2d> getSnakePartsPositions() {
         List<GameEntity> snakeParts = getSnakeParts();
         List<Vec2d> currentPositions = new ArrayList<>();
         for (GameEntity snakePart : snakeParts) {
             currentPositions.add(snakePart.getPosition());
         }
-        System.out.println(currentPositions);
+        return currentPositions;
     }
+
+    public static List<Double> getSnakesHead() {
+        List<Vec2d> snakeParts = getSnakePartsPositions();
+        List<Double> coordinates = new ArrayList<>();
+        List<Vec2d> snakeHead = new ArrayList<>();
+        if(snakeParts.size() != 0) {
+            snakeHead.add(snakeParts.get(0));
+            for (Vec2d coordinate : snakeHead) {
+                coordinates.add(coordinate.x);
+                coordinates.add(coordinate.y);
+            }
+            return coordinates;
+        }
+        return null;
+    }
+
+    public static boolean doNotSpawnRange(Double x, Double y) {
+        List<Double> coordinates = getSnakesHead();
+        if (coordinates != null) {
+            Double minx = coordinates.get(0) - 600;
+            Double miny = coordinates.get(1) - 600;
+            Double maxx = coordinates.get(0) + 600;
+            Double maxy = coordinates.get(1) + 600;
+            if ((x >= minx && x <= maxx) && (y >= miny && y <= maxy)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }
