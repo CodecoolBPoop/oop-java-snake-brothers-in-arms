@@ -29,7 +29,7 @@ public class GameLoop {
     public void step() {
         if (running) {
             snake.step();
-            if (Math.random() < 0.005) {
+            if (Math.random() < 0.002) {
 
                 Game.spawnEnemies(1);
             }
@@ -122,7 +122,7 @@ public class GameLoop {
             Double miny = coordinates.get(1) - 600;
             Double maxx = coordinates.get(0) + 600;
             Double maxy = coordinates.get(1) + 600;
-            return (x < minx || x > maxx) || (y < miny || y > maxy);
+            return (x < minx && x > maxx) || (y < miny && y > maxy);
         }
         return false;
     }

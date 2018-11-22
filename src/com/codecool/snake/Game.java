@@ -90,10 +90,4 @@ public class Game extends Pane {
         scene.setOnKeyReleased(event -> InputHandler.getInstance().setKeyReleased(event.getCode()));
     }
 
-    /*static void isEnemiesNeed(int numberOfEnemies) {
-        if(numberOfEnemies <= 2) {
-            for(int i = 0; i < numberOfEnemies - 1; i++) new SimpleEnemy();
-        }
-    }
-    */
 }
