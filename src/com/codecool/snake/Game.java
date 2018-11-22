@@ -37,6 +37,7 @@ public class Game extends Pane {
         spawnPowerUps(4);
         spawnSpeedUps(2);
         spawnGuns(3);
+        spawnHealthBar("healthBar");
 
         GameLoop gameLoop = new GameLoop(snake);
         Globals.getInstance().setGameLoop(gameLoop);
