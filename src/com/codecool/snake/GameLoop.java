@@ -36,6 +36,9 @@ public class GameLoop {
             if (Math.random() < 0.001) {
                 Game.spawnGuns(1);
             }
+            if (Math.random() < 0.001) {
+                Game.spawnRockets(1);
+            }
             if (Math.random() < 0.003) {
                 Game.spawnSpeedUps(1);
             }

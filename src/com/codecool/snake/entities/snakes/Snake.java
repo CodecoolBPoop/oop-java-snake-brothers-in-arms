@@ -21,6 +21,7 @@ public class Snake implements Animatable {
     private static float speed = 2;
     private static int health = 99;
     private static int ammo;
+    private static int rocketAmmo;
 
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
@@ -32,6 +33,7 @@ public class Snake implements Animatable {
 
         addPart(4);
     }
+
 
     public void step() {
         SnakeControl turnDir = getUserInput();
@@ -48,6 +50,7 @@ public class Snake implements Animatable {
         if (InputHandler.getInstance().isKeyPressed(KeyCode.LEFT)) turnDir = SnakeControl.TURN_LEFT;
         if (InputHandler.getInstance().isKeyPressed(KeyCode.RIGHT)) turnDir = SnakeControl.TURN_RIGHT;
         if (InputHandler.getInstance().isKeyPressed(KeyCode.SPACE)) turnDir = SnakeControl.SPACE;
+        if (InputHandler.getInstance().isKeyPressed(KeyCode.R)) turnDir = SnakeControl.R;
         return turnDir;
     }
 
@@ -112,5 +115,13 @@ public class Snake implements Animatable {
 
     public static void setAmmo(int ammo) {
         Snake.ammo = ammo;
+    }
+
+    public static int getRocketAmmo() {
+        return rocketAmmo;
+    }
+
+    public static void setRocketAmmo(int rocketAmmo) {
+        Snake.rocketAmmo = rocketAmmo;
     }
 }

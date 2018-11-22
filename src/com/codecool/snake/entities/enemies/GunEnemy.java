@@ -6,6 +6,7 @@ import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.Shooting.RocketShooting;
 import com.codecool.snake.entities.Shooting.Shooting;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.geometry.Point2D;
@@ -53,6 +54,8 @@ public class GunEnemy extends Enemy implements Animatable, Interactable {
             System.out.println(getMessage());
             destroy();
         }else if (entity instanceof Shooting) {
+            destroy();
+        } else if (entity instanceof RocketShooting) {
             destroy();
         }
     }

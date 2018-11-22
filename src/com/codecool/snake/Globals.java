@@ -35,6 +35,7 @@ public class Globals {
         resources.addImage("SimpleEnemy", new Image("btank.png"));
         resources.addImage("GunEnemy", new Image("Enemy_2.png"));
         resources.addImage("PowerUpGun", new Image("agun1.png"));
+        resources.addImage("PowerUpRocket", new Image("rocket_gun.png"));
         resources.addImage("PowerUpBerry", new Image("powerup_berry.png"));
         resources.addImage("PowerUpSpeed", new Image("test_powerup.png"));
         resources.addImage("healthBar", new Image("healthBar.png"));
@@ -42,6 +43,7 @@ public class Globals {
         resources.addImage("healthBar3", new Image("healthBar3.png"));
         resources.addImage("gameOver", new Image("gameOver.png"));
         resources.addImage("Ammo", new Image("ammo.png"));
+        resources.addImage("rocketAmmo", new Image("rocket_ammo.png"));
         resources.addImage("Background", new Image("com/codecool/snake/background.png"));
     }
 

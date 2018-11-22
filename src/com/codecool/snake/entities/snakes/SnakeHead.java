@@ -3,14 +3,12 @@ package com.codecool.snake.entities.snakes;
 import com.codecool.snake.*;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.Shooting.RocketShooting;
 import com.codecool.snake.entities.Shooting.Shooting;
 import com.codecool.snake.entities.enemies.Enemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
-import com.codecool.snake.entities.powerups.GunPowerUp;
-import com.codecool.snake.entities.powerups.HealthBar;
-import com.codecool.snake.entities.powerups.SimplePowerUp;
+import com.codecool.snake.entities.powerups.*;
 
-import com.codecool.snake.entities.powerups.SpeedUpPowerUp;
 import com.sun.javafx.geom.Vec2d;
 import javafx.geometry.Point2D;
 
@@ -41,6 +39,13 @@ public class SnakeHead extends GameEntity implements Interactable {
             if (Snake.getAmmo() != 0) {
                 if (turnDirection.equals(SnakeControl.SPACE)) {
                     new Shooting(headRotation);
+                }
+            }
+        }
+        if (snakeImage != null && snakeImage.equals("SnakeHeadGun")) {
+            if (Snake.getRocketAmmo() != 0) {
+                if (turnDirection.equals(SnakeControl.R)) {
+                    new RocketShooting(headRotation);
                 }
             }
         }
@@ -75,9 +80,17 @@ public class SnakeHead extends GameEntity implements Interactable {
             setImage(Globals.getInstance().getImage("SnakeHeadGun"));
             snakeImage = "SnakeHeadGun";
             Snake.setAmmo(Snake.getAmmo()+ 36);
-            Snake.setSpeed(Snake.getSpeed() - 0.3f);
-        }else if (entity instanceof GunPowerUp && Snake.getAmmo() != 0) {
+            Snake.setSpeed(Snake.getSpeed() - 0.2f);
+        }else if (entity instanceof GunPowerUp) {
             Snake.setAmmo(Snake.getAmmo() + 36);
+        }else if (Snake.getAmmo() == 0 && Snake.getRocketAmmo() == 0) {
+            setImage(Globals.getInstance().getImage("SnakeHead1"));
+        }
+        if (entity instanceof RocketPowerUp && Snake.getRocketAmmo() == 0) {
+            setImage(Globals.getInstance().getImage("SnakeHeadGun"));
+            snakeImage = "SnakeHeadGun";
+            Snake.setRocketAmmo(Snake.getRocketAmmo() + 36);
+            Snake.setSpeed(Snake.getSpeed() - 0.2f);
         }
     }
 

@@ -4,5 +4,6 @@ public enum SnakeControl {
     TURN_LEFT,
     TURN_RIGHT,
     SPACE,
+    R,
     INVALID
 }

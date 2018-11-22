@@ -7,6 +7,7 @@ import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.Shooting.RocketShooting;
 import com.codecool.snake.entities.Shooting.Shooting;
 import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.entities.snakes.SnakeHead;
@@ -56,8 +57,7 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
         if(entity instanceof SnakeHead){
             System.out.println(getMessage());
             destroy();
-        }
-        if (entity instanceof Shooting){
+        }else if (entity instanceof RocketShooting){
             destroy();
         }
     }
