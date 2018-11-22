@@ -33,7 +33,7 @@ public class GameLoop {
 
                 Game.spawnEnemies(1);
             }
-            if (Math.random() < 0.003) {
+            if (Math.random() < 0.001) {
                 Game.spawnGuns(1);
             }
             if (Math.random() < 0.003) {
@@ -110,7 +110,6 @@ public class GameLoop {
                 coordinates.add(coordinate.x);
                 coordinates.add(coordinate.y);
             }
-            System.out.println(coordinates);
             return coordinates;
         }
         return null;
