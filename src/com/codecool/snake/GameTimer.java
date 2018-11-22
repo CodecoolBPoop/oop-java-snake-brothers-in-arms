@@ -10,7 +10,7 @@ public class GameTimer {
     private double frameTime;
     private Timeline timer = new Timeline();
 
-    GameTimer() {
+   public GameTimer() {
         this(DEFAULT_60_FPS);
     }
 

@@ -1,5 +1,6 @@
 package com.codecool.snake.entities.enemies;
 
+import com.codecool.snake.GameLoop;
 import com.codecool.snake.Globals;
 import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Animatable;
@@ -14,13 +15,20 @@ import java.util.Random;
 public class GunEnemy extends Enemy implements Animatable, Interactable {
     private Point2D heading;
     private static Random rnd = new Random();
+    public static double xCoordinate;
+    public static double yCoordinate;
 
     public GunEnemy() {
         super(10);
 
         setImage(Globals.getInstance().getImage("GunEnemy"));
-        setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
-        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+        do {
+            xCoordinate = rnd.nextDouble() * Globals.WINDOW_WIDTH;
+            yCoordinate = rnd.nextDouble() * Globals.WINDOW_HEIGHT;
+        } while (GameLoop.doNotSpawnRange(xCoordinate, yCoordinate));
+
+        setX(xCoordinate);
+        setY(yCoordinate);
 
 
         double direction = rnd.nextDouble() * 360;
