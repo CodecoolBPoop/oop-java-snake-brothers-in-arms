@@ -27,7 +27,7 @@ public class Shooting extends GameEntity implements Animatable, Interactable {
         double direction = rotation;
         setRotate(direction);
 
-        int speed = 4;
+        int speed = 6;
         heading = Utils.directionToVector(direction, speed);
     }
 

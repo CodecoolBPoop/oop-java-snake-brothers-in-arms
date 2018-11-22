@@ -30,11 +30,11 @@ public class Globals {
         resources = new Resources();
         resources.addImage("SnakeHead", new Image("snake_head.png"));
         resources.addImage("SnakeHead1", new Image("New_Project_5.png"));
-        resources.addImage("SnakeHeadGun", new Image("New_Project_2.png"));
+        resources.addImage("SnakeHeadGun", new Image("gunman.png"));
         resources.addImage("SnakeBody", new Image("New_Project_5.png"));
-        resources.addImage("SimpleEnemy", new Image("simple_enemy.png"));
+        resources.addImage("SimpleEnemy", new Image("btank.png"));
         resources.addImage("GunEnemy", new Image("Enemy_2.png"));
-        resources.addImage("PowerUpGun", new Image("powerup_gun.png"));
+        resources.addImage("PowerUpGun", new Image("agun1.png"));
         resources.addImage("PowerUpBerry", new Image("powerup_berry.png"));
         resources.addImage("PowerUpSpeed", new Image("test_powerup.png"));
         resources.addImage("healthBar", new Image("healthBar.png"));
