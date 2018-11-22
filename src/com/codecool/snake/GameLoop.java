@@ -29,9 +29,8 @@ public class GameLoop {
     public void step() {
         if (running) {
             snake.step();
+
             if (Math.random() < 0.007) {
-                // add here the exception for enemy spawn on the snake body
-                getSnakePartsPositions();
                 Game.spawnEnemies(1);
             }
             if (Math.random() < 0.003) {
@@ -46,6 +45,13 @@ public class GameLoop {
             for (GameEntity gameObject : Globals.getInstance().display.getObjectList()) {
                 if (gameObject instanceof Animatable) {
                     ((Animatable) gameObject).step();
+                }
+            }
+            int snakeHealth = 100;
+            for(int i = 5; i > 1; i--){
+                if(Snake.getHealth() <= snakeHealth ){
+                    Game.spawnHealthBar(i);
+                    snakeHealth = snakeHealth - 20;
                 }
             }
             checkCollisions();

@@ -13,8 +13,8 @@ import javafx.scene.input.KeyCode;
 
 
 public class Snake implements Animatable {
-    private static float speed = 3;
-    private int health = 100;
+    private static float speed = 1;
+    private static int health = 100;
     private static int ammo;
 
     private SnakeHead head;
@@ -35,6 +35,7 @@ public class Snake implements Animatable {
         updateSnakeBodyHistory();
         checkForGameOverConditions();
         body.doPendingModifications();
+
     }
 
     private SnakeControl getUserInput() {
@@ -56,7 +57,7 @@ public class Snake implements Animatable {
     }
 
     public void changeHealth(int diff) {
-        health += diff;
+        health -= diff;
     }
 
 
@@ -85,6 +86,10 @@ public class Snake implements Animatable {
         if(result != null) return result;
         return head;
     }
+
+    public static int getHealth() { return health; }
+
+    public static void setHealth(int health) { Snake.health = health; }
 
     public static float getSpeed() {
         return speed;
