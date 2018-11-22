@@ -16,7 +16,7 @@ import java.util.List;
 
 
 public class Snake implements Animatable {
-    private static float speed = 1;
+    private static float speed = 2;
     private static int health = 99;
     private static int ammo;
 
