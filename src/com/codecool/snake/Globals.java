@@ -34,6 +34,7 @@ public class Globals {
         resources.addImage("SnakeHeadGun", new Image("New_Project_2.png"));
         resources.addImage("SnakeBody", new Image("New_Project_5.png"));
         resources.addImage("SimpleEnemy", new Image("simple_enemy.png"));
+        resources.addImage("GunEnemy", new Image("Enemy_2.png"));
         resources.addImage("PowerUpGun", new Image("powerup_gun.png"));
         resources.addImage("PowerUpBerry", new Image("powerup_berry.png"));
         resources.addImage("PowerUpSpeed", new Image("test_powerup.png"));

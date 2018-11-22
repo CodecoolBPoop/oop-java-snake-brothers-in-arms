@@ -1,5 +1,6 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.enemies.GunEnemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.GunPowerUp;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
@@ -28,6 +29,7 @@ public class Game extends Pane {
     public void init() {
         spawnSnake();
         spawnEnemies(4);
+        spawnGunEnemies(4);
         spawnPowerUps(4);
         spawnSpeedUps(2);
         spawnGuns(3);
@@ -57,6 +59,10 @@ public class Game extends Pane {
 
     static void spawnEnemies(int numberOfEnemies) {
         for(int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
+    }
+
+    static void spawnGunEnemies(int numberOfEnemies) {
+        for(int i = 0; i < numberOfEnemies; ++i) new GunEnemy();
     }
 
     static void spawnPowerUps(int numberOfPowerUps) {
