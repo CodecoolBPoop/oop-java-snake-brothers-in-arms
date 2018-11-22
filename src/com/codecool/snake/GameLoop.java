@@ -6,6 +6,7 @@ import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.snakes.Snake;
 import com.sun.javafx.geom.Vec2d;
 
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class GameLoop {
@@ -92,6 +93,7 @@ public class GameLoop {
                 coordinates.add(coordinate.x);
                 coordinates.add(coordinate.y);
             }
+            System.out.println(coordinates);
             return coordinates;
         }
         return null;
@@ -100,17 +102,13 @@ public class GameLoop {
     public static boolean doNotSpawnRange(Double x, Double y) {
         List<Double> coordinates = getSnakesHead();
         if (coordinates != null) {
-            Double minx = coordinates.get(0) - 600;
+            Double minx = coordinates.get(0) - 100;
             Double miny = coordinates.get(1) - 600;
             Double maxx = coordinates.get(0) + 600;
             Double maxy = coordinates.get(1) + 600;
-            if ((x >= minx && x <= maxx) && (y >= miny && y <= maxy)) {
-                return true;
-            } else {
-                return false;
-            }
+            return (x < minx || x > maxx) || (y < miny || y > maxy);
         }
-        return true;
+        return false;
     }
 
 }
