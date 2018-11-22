@@ -1,5 +1,6 @@
 package com.codecool.snake.entities.enemies;
 
+import com.codecool.snake.Game;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
@@ -17,7 +18,7 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
 
     private Point2D heading;
     private static Random rnd = new Random();
-
+    private boolean checked = false;
     public SimpleEnemy() {
         super(20);
 
@@ -40,12 +41,15 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
         }
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
+
+
     }
 
     @Override
     public void apply(GameEntity entity) {
         if(entity instanceof SnakeHead){
             System.out.println(getMessage());
+
             destroy();
         }
     }

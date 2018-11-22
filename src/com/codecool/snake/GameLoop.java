@@ -29,6 +29,15 @@ public class GameLoop {
     public void step() {
         if (running) {
             snake.step();
+            if (Snake.getHealth() == 75) {
+                Game.spawnHealthBar(3);
+            }
+            if (Snake.getHealth() == 50) {
+               Game.spawnHealthBar(2);
+                        }
+            if (Snake.getHealth() == 25) {
+                Game.spawnHealthBar(1);
+                       }
 
             if (Math.random() < 0.007) {
                 Game.spawnEnemies(1);
@@ -42,16 +51,10 @@ public class GameLoop {
             if (Math.random() < 0.002) {
                 Game.spawnPowerUps(1);
             }
+
             for (GameEntity gameObject : Globals.getInstance().display.getObjectList()) {
                 if (gameObject instanceof Animatable) {
                     ((Animatable) gameObject).step();
-                }
-            }
-            int snakeHealth = 100;
-            for(int i = 5; i > 1; i--){
-                if(Snake.getHealth() <= snakeHealth ){
-                    Game.spawnHealthBar(i);
-                    snakeHealth = snakeHealth - 20;
                 }
             }
             checkCollisions();

@@ -32,7 +32,7 @@ public class Game extends Pane {
         spawnPowerUps(1);
         spawnSpeedUps(1);
         spawnGuns(0);
-
+        spawnHealthBar(4);
 
         GameLoop gameLoop = new GameLoop(snake);
         Globals.getInstance().setGameLoop(gameLoop);
@@ -65,7 +65,7 @@ public class Game extends Pane {
         for(int i = 0; i < numberOfPowerUps; ++i) new SimplePowerUp();
     }
 
-    static void spawnHealthBar(int livesLeft){
+    public static void spawnHealthBar(int livesLeft){
         int x = 100;
         for (int i = 0; i < livesLeft; i++){
             x = x + 40;
@@ -79,10 +79,4 @@ public class Game extends Pane {
         scene.setOnKeyReleased(event -> InputHandler.getInstance().setKeyReleased(event.getCode()));
     }
 
-    /*static void isEnemiesNeed(int numberOfEnemies) {
-        if(numberOfEnemies <= 2) {
-            for(int i = 0; i < numberOfEnemies - 1; i++) new SimpleEnemy();
-        }
-    }
-    */
 }
