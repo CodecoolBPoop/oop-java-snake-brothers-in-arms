@@ -5,6 +5,7 @@ import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.snakes.Snake;
 import com.sun.javafx.geom.Vec2d;
+import com.sun.org.apache.xerces.internal.xs.datatypes.ObjectList;
 
 import java.sql.SQLOutput;
 import java.util.*;
@@ -28,9 +29,8 @@ public class GameLoop {
     public void step() {
         if (running) {
             snake.step();
-            getSnakesHead();
-            if (Math.random() < 0.07) {
-                // add here the exception for enemy spawn on the snake body
+            if (Math.random() < 0.007) {
+
                 Game.spawnEnemies(1);
             }
             if (Math.random() < 0.003) {
@@ -42,12 +42,20 @@ public class GameLoop {
             if (Math.random() < 0.002) {
                 Game.spawnPowerUps(1);
             }
+
             for (GameEntity gameObject : Globals.getInstance().display.getObjectList()) {
                 if (gameObject instanceof Animatable) {
                     ((Animatable) gameObject).step();
                 }
             }
+            if (Snake.getHealth() == 66){
+                Game.spawnHealthBar("healthBar2");
+            }
+            if(Snake.getHealth() == 33){
+                Game.spawnHealthBar("healthBar3");
+            }
             checkCollisions();
+
         }
 
         Globals.getInstance().display.frameFinished();
