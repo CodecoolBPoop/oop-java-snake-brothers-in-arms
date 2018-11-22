@@ -28,12 +28,11 @@ public class GameLoop {
     public void step() {
         if (running) {
             snake.step();
-            getSnakesHead();
-            if (Math.random() < 0.07) {
+            if (Math.random() < 0.007) {
                 // add here the exception for enemy spawn on the snake body
                 Game.spawnEnemies(1);
             }
-            if (Math.random() < 0.003) {
+            if (Math.random() < 0.001) {
                 Game.spawnGuns(1);
             }
             if (Math.random() < 0.003) {
@@ -102,7 +101,6 @@ public class GameLoop {
                 coordinates.add(coordinate.x);
                 coordinates.add(coordinate.y);
             }
-            System.out.println(coordinates);
             return coordinates;
         }
         return null;
@@ -112,7 +110,7 @@ public class GameLoop {
         List<Double> coordinates = getSnakesHead();
         if (coordinates != null) {
             Double minx = coordinates.get(0) - 100;
-            Double miny = coordinates.get(1) - 600;
+            Double miny = coordinates.get(1) - 100;
             Double maxx = coordinates.get(0) + 600;
             Double maxy = coordinates.get(1) + 600;
             return (x < minx || x > maxx) || (y < miny || y > maxy);

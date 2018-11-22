@@ -6,6 +6,7 @@ import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.Shooting.Shooting;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import java.util.Random;
 
@@ -27,11 +28,9 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
             xCoordinate = rnd.nextDouble() * Globals.WINDOW_WIDTH;
             yCoordinate = rnd.nextDouble() * Globals.WINDOW_HEIGHT;
         } while (GameLoop.doNotSpawnRange(xCoordinate, yCoordinate));
-        {
-            setX(xCoordinate);
-            setY(yCoordinate);
 
-        }
+        setX(xCoordinate);
+        setY(yCoordinate);
 
         double direction = rnd.nextDouble() * 360;
         setRotate(direction);
@@ -53,6 +52,9 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
     public void apply(GameEntity entity) {
         if(entity instanceof SnakeHead){
             System.out.println(getMessage());
+            destroy();
+        }
+        if (entity instanceof Shooting){
             destroy();
         }
     }
