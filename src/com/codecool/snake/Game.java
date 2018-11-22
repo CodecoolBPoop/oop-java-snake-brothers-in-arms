@@ -39,11 +39,11 @@ public class Game extends Pane {
     }
 
     static void spawnSpeedUps(int numOfPowerUps) {
-        for(int i = 0; i < numOfPowerUps; ++i) new SpeedUpPowerUp();
+        for (int i = 0; i < numOfPowerUps; ++i) new SpeedUpPowerUp();
     }
 
     static void spawnGuns(int numOfPowerUps) {
-        for(int i = 0; i < numOfPowerUps; ++i) new GunPowerUp();
+        for (int i = 0; i < numOfPowerUps; ++i) new GunPowerUp();
     }
 
     public void start() {
@@ -56,11 +56,11 @@ public class Game extends Pane {
     }
 
     static void spawnEnemies(int numberOfEnemies) {
-        for(int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
+        for (int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
     }
 
     static void spawnPowerUps(int numberOfPowerUps) {
-        for(int i = 0; i < numberOfPowerUps; ++i) new SimplePowerUp();
+        for (int i = 0; i < numberOfPowerUps; ++i) new SimplePowerUp();
     }
 
     private void setupInputHandling() {
@@ -68,11 +68,4 @@ public class Game extends Pane {
         scene.setOnKeyPressed(event -> InputHandler.getInstance().setKeyPressed(event.getCode()));
         scene.setOnKeyReleased(event -> InputHandler.getInstance().setKeyReleased(event.getCode()));
     }
-
-    /*static void isEnemiesNeed(int numberOfEnemies) {
-        if(numberOfEnemies <= 2) {
-            for(int i = 0; i < numberOfEnemies - 1; i++) new SimpleEnemy();
-        }
-    }
-    */
 }
