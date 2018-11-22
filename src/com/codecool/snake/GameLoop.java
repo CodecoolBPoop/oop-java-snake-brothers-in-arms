@@ -42,6 +42,9 @@ public class GameLoop {
             if (Math.random() < 0.002) {
                 Game.spawnPowerUps(1);
             }
+            if (Math.random() < 0.002) {
+                Game.spawnGunEnemies(1);
+            }
 
             for (GameEntity gameObject : Globals.getInstance().display.getObjectList()) {
                 if (gameObject instanceof Animatable) {

@@ -1,10 +1,7 @@
 package com.codecool.snake.entities.snakes;
 
-import com.codecool.snake.Display;
-import com.codecool.snake.Game;
+import com.codecool.snake.*;
 import com.codecool.snake.entities.GameEntity;
-import com.codecool.snake.Globals;
-import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.Shooting.Shooting;
 import com.codecool.snake.entities.enemies.Enemy;
@@ -44,8 +41,6 @@ public class SnakeHead extends GameEntity implements Interactable {
             if (Snake.getAmmo() != 0) {
                 if (turnDirection.equals(SnakeControl.SPACE)) {
                     new Shooting(headRotation);
-                    Snake.setAmmo(Snake.getAmmo() -1);
-                    System.out.println(Snake.getAmmo());
                 }
             }
         }
@@ -56,6 +51,10 @@ public class SnakeHead extends GameEntity implements Interactable {
         Point2D heading = Utils.directionToVector(headRotation, speed);
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
+    }
+
+    public void ammoCounter() {
+        Snake.setAmmo(Snake.getAmmo() -1);
     }
 
     @Override
@@ -75,10 +74,10 @@ public class SnakeHead extends GameEntity implements Interactable {
         if (entity instanceof GunPowerUp && Snake.getAmmo() == 0) {
             setImage(Globals.getInstance().getImage("SnakeHeadGun"));
             snakeImage = "SnakeHeadGun";
-            Snake.setAmmo(Snake.getAmmo()+ 5);
+            Snake.setAmmo(Snake.getAmmo()+ 36);
             Snake.setSpeed(Snake.getSpeed() - 0.3f);
         }else if (entity instanceof GunPowerUp && Snake.getAmmo() != 0) {
-            Snake.setAmmo(Snake.getAmmo() + 5);
+            Snake.setAmmo(Snake.getAmmo() + 36);
         }
     }
 
