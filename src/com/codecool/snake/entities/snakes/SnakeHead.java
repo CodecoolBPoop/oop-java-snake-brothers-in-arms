@@ -17,10 +17,13 @@ import com.codecool.snake.entities.powerups.SpeedUpPowerUp;
 import com.sun.javafx.geom.Vec2d;
 import javafx.geometry.Point2D;
 
+import java.util.concurrent.TimeUnit;
+
 
 public class SnakeHead extends GameEntity implements Interactable {
     private static final float turnRate = 2;
     private Snake snake;
+    String snakeImage;
 
     public SnakeHead(Snake snake, Vec2d position) {
         this.snake = snake;
@@ -37,9 +40,16 @@ public class SnakeHead extends GameEntity implements Interactable {
         if (turnDirection.equals(SnakeControl.TURN_RIGHT)) {
             headRotation = headRotation + turnRate;
         }
-        if (turnDirection.equals(SnakeControl.SPACE)) {
-            new Shooting(headRotation);
+        if (snakeImage != null && snakeImage.equals("SnakeHeadGun")) {
+            if (Snake.getAmmo() != 0) {
+                if (turnDirection.equals(SnakeControl.SPACE)) {
+                    new Shooting(headRotation);
+                    Snake.setAmmo(Snake.getAmmo() -1);
+                    System.out.println(Snake.getAmmo());
+                }
+            }
         }
+
 
         // set rotation and position
         setRotate(headRotation);
@@ -57,14 +67,16 @@ public class SnakeHead extends GameEntity implements Interactable {
 
         if(entity instanceof SimplePowerUp){
             System.out.println(getMessage());
-            snake.addPart(2);
+            snake.addPart(1);
         }
         if (entity instanceof SpeedUpPowerUp) {
             Snake.setSpeed(Snake.getSpeed() + 0.3f);
         }
         if (entity instanceof GunPowerUp && Snake.getAmmo() == 0) {
             setImage(Globals.getInstance().getImage("SnakeHeadGun"));
+            snakeImage = "SnakeHeadGun";
             Snake.setAmmo(Snake.getAmmo()+ 5);
+            Snake.setSpeed(Snake.getSpeed() - 0.3f);
         }else if (entity instanceof GunPowerUp && Snake.getAmmo() != 0) {
             Snake.setAmmo(Snake.getAmmo() + 5);
         }
