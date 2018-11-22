@@ -2,6 +2,7 @@ package com.codecool.snake;
 
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.GunPowerUp;
+import com.codecool.snake.entities.powerups.HealthBar;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
 import com.codecool.snake.entities.powerups.SpeedUpPowerUp;
 import com.codecool.snake.entities.snakes.Snake;
@@ -11,10 +12,14 @@ import com.sun.javafx.geom.Vec2d;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Game extends Pane {
     private Snake snake = null;
     private GameTimer gameTimer = new GameTimer();
+
 
 
     public Game() {
@@ -28,9 +33,11 @@ public class Game extends Pane {
     public void init() {
         spawnSnake();
         spawnEnemies(4);
-        spawnPowerUps(4);
-        spawnSpeedUps(2);
-        spawnGuns(3);
+        spawnPowerUps(1);
+        spawnSpeedUps(1);
+        spawnGuns(0);
+        spawnHealthBar("healthBar");
+
 
         GameLoop gameLoop = new GameLoop(snake);
         Globals.getInstance().setGameLoop(gameLoop);
@@ -61,6 +68,12 @@ public class Game extends Pane {
 
     static void spawnPowerUps(int numberOfPowerUps) {
         for(int i = 0; i < numberOfPowerUps; ++i) new SimplePowerUp();
+    }
+
+    public static void spawnHealthBar(String healthBar){
+        int x = 100;
+       int y = 30;
+       new HealthBar(x, y, healthBar);
     }
 
     private void setupInputHandling() {

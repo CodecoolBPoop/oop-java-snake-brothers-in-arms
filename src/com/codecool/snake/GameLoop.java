@@ -30,8 +30,7 @@ public class GameLoop {
         if (running) {
             snake.step();
             if (Math.random() < 0.007) {
-                // add here the exception for enemy spawn on the snake body
-                getSnakePartsPositions();
+
                 Game.spawnEnemies(1);
             }
             if (Math.random() < 0.003) {
@@ -43,12 +42,20 @@ public class GameLoop {
             if (Math.random() < 0.002) {
                 Game.spawnPowerUps(1);
             }
+
             for (GameEntity gameObject : Globals.getInstance().display.getObjectList()) {
                 if (gameObject instanceof Animatable) {
                     ((Animatable) gameObject).step();
                 }
             }
+            if (Snake.getHealth() == 66){
+                Game.spawnHealthBar("healthBar2");
+            }
+            if(Snake.getHealth() == 33){
+                Game.spawnHealthBar("healthBar3");
+            }
             checkCollisions();
+
         }
 
         Globals.getInstance().display.frameFinished();
@@ -72,7 +79,7 @@ public class GameLoop {
         }
     }
 
-    private List<GameEntity> getSnakeParts() {
+    private static List<GameEntity> getSnakeParts() {
         List<GameEntity> gameObjects = Globals.getInstance().display.getObjectList();
         List<GameEntity> snakeParts = new ArrayList<>();
         for (GameEntity gameObject : gameObjects) {
@@ -84,13 +91,41 @@ public class GameLoop {
         return snakeParts;
     }
 
-
-    private void getSnakePartsPositions() {
+    private static List<Vec2d> getSnakePartsPositions() {
         List<GameEntity> snakeParts = getSnakeParts();
         List<Vec2d> currentPositions = new ArrayList<>();
         for (GameEntity snakePart : snakeParts) {
             currentPositions.add(snakePart.getPosition());
         }
-        System.out.println(currentPositions);
+        return currentPositions;
     }
+
+    public static List<Double> getSnakesHead() {
+        List<Vec2d> snakeParts = getSnakePartsPositions();
+        List<Double> coordinates = new ArrayList<>();
+        List<Vec2d> snakeHead = new ArrayList<>();
+        if(snakeParts.size() != 0) {
+            snakeHead.add(snakeParts.get(0));
+            for (Vec2d coordinate : snakeHead) {
+                coordinates.add(coordinate.x);
+                coordinates.add(coordinate.y);
+            }
+            System.out.println(coordinates);
+            return coordinates;
+        }
+        return null;
+    }
+
+    public static boolean doNotSpawnRange(Double x, Double y) {
+        List<Double> coordinates = getSnakesHead();
+        if (coordinates != null) {
+            Double minx = coordinates.get(0) - 100;
+            Double miny = coordinates.get(1) - 600;
+            Double maxx = coordinates.get(0) + 600;
+            Double maxy = coordinates.get(1) + 600;
+            return (x < minx || x > maxx) || (y < miny || y > maxy);
+        }
+        return false;
+    }
+
 }
