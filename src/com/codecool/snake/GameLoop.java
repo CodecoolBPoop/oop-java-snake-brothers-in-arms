@@ -29,7 +29,7 @@ public class GameLoop {
     public void step() {
         if (running) {
             snake.step();
-            if (Math.random() < 0.007) {
+            if (Math.random() < 0.005) {
 
                 Game.spawnEnemies(1);
             }
