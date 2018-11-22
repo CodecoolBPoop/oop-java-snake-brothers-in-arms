@@ -13,7 +13,10 @@ import java.util.*;
 public class GameLoop {
     private Snake snake;
     private boolean running = false;
-
+    boolean run = false;
+    boolean run2 = false;
+    boolean run3 = false;
+    boolean run4 = false;
     public GameLoop(Snake snake) {
         this.snake = snake;
     }
@@ -29,16 +32,6 @@ public class GameLoop {
     public void step() {
         if (running) {
             snake.step();
-            if (Snake.getHealth() == 75) {
-                Game.spawnHealthBar(3);
-            }
-            if (Snake.getHealth() == 50) {
-               Game.spawnHealthBar(2);
-                        }
-            if (Snake.getHealth() == 25) {
-                Game.spawnHealthBar(1);
-                       }
-
             if (Math.random() < 0.007) {
                 Game.spawnEnemies(1);
             }
@@ -57,7 +50,14 @@ public class GameLoop {
                     ((Animatable) gameObject).step();
                 }
             }
+            if (Snake.getHealth() == 66){
+                Game.spawnHealthBar("healthBar2");
+            }
+            if(Snake.getHealth() == 33){
+                Game.spawnHealthBar("healthBar3");
+            }
             checkCollisions();
+
         }
 
         Globals.getInstance().display.frameFinished();

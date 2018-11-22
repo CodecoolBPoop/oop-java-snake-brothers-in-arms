@@ -38,6 +38,8 @@ public class Globals {
         resources.addImage("PowerUpBerry", new Image("powerup_berry.png"));
         resources.addImage("PowerUpSpeed", new Image("test_powerup.png"));
         resources.addImage("healthBar", new Image("healthBar.png"));
+        resources.addImage("healthBar2", new Image("healthBar2.png"));
+        resources.addImage("healthBar3", new Image("healthBar3.png"));
     }
 
     public Image getImage(String name) { return resources.getImage(name); }

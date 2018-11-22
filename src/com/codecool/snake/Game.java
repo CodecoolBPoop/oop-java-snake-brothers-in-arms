@@ -12,10 +12,14 @@ import com.sun.javafx.geom.Vec2d;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Game extends Pane {
     private Snake snake = null;
     private GameTimer gameTimer = new GameTimer();
+
 
 
     public Game() {
@@ -32,7 +36,8 @@ public class Game extends Pane {
         spawnPowerUps(1);
         spawnSpeedUps(1);
         spawnGuns(0);
-        spawnHealthBar(4);
+        spawnHealthBar("healthBar");
+
 
         GameLoop gameLoop = new GameLoop(snake);
         Globals.getInstance().setGameLoop(gameLoop);
@@ -65,12 +70,10 @@ public class Game extends Pane {
         for(int i = 0; i < numberOfPowerUps; ++i) new SimplePowerUp();
     }
 
-    public static void spawnHealthBar(int livesLeft){
+    public static void spawnHealthBar(String healthBar){
         int x = 100;
-        for (int i = 0; i < livesLeft; i++){
-            x = x + 40;
-            new HealthBar(x, 30);
-        }
+       int y = 30;
+       new HealthBar(x, y, healthBar);
     }
 
     private void setupInputHandling() {

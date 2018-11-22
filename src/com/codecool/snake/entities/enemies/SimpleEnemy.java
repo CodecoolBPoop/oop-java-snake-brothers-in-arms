@@ -18,7 +18,6 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
 
     private Point2D heading;
     private static Random rnd = new Random();
-    private boolean checked = false;
     public SimpleEnemy() {
         super(20);
 
@@ -49,7 +48,6 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
     public void apply(GameEntity entity) {
         if(entity instanceof SnakeHead){
             System.out.println(getMessage());
-
             destroy();
         }
     }
