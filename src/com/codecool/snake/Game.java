@@ -80,6 +80,10 @@ public class Game extends Pane {
        new HealthBar(x, y, healthBar);
     }
 
+    public static void spawnGameOver(){
+        new GameOver();
+    }
+
     private void setupInputHandling() {
         Scene scene = getScene();
         scene.setOnKeyPressed(event -> InputHandler.getInstance().setKeyPressed(event.getCode()));

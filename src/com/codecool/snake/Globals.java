@@ -41,6 +41,7 @@ public class Globals {
         resources.addImage("healthBar", new Image("healthBar.png"));
         resources.addImage("healthBar2", new Image("healthBar2.png"));
         resources.addImage("healthBar3", new Image("healthBar3.png"));
+        resources.addImage("gameOver", new Image("gameOver.png"));
     }
 
     public Image getImage(String name) { return resources.getImage(name); }
