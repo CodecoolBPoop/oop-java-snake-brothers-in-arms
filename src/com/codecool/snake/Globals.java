@@ -44,7 +44,7 @@ public class Globals {
         resources.addImage("gameOver", new Image("gameOver.png"));
         resources.addImage("Ammo", new Image("ammo.png"));
         resources.addImage("rocketAmmo", new Image("rocket_ammo.png"));
-        resources.addImage("Background", new Image("com/codecool/snake/background.png"));
+        resources.addImage("Background", new Image("com/codecool/snake/wbackground.png"));
     }
 
     public Image getImage(String name) { return resources.getImage(name); }
